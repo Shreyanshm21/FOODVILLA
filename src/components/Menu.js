@@ -23,7 +23,7 @@ const Menu = ({ title, itemCards,index  , flag1 , flag2 }) => {
     <>
     
     <div className="subSections">
-        <div className="flex justify-between p-4 items-center ">
+        <div className="flex justify-between p-4 items-center cursor-pointer " onClick={trying}>
             <h1 className="font-bold">{title}</h1>
             <button className="items-center" onClick={trying}>{flag ? <FaAngleUp /> : <FaAngleDown />}</button>
         
