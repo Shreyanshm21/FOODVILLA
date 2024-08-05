@@ -27,11 +27,12 @@ const ItemList = ({ items }) => {
 
   const vegNon = (isVeg) => {
     return isVeg ? (
-      <GrSquare className="text-green-500" />
+        <GrSquare className="text-green-500" />
     ) : (
-      <FaRegSquareCaretUp className="text-red-500" />
+        <FaRegSquareCaretUp className="text-red-500" />
     );
-  };
+};
+
 
   const cartRestaurantId = useSelector((state) => state.cart.restaurantId);
 
@@ -41,10 +42,10 @@ const ItemList = ({ items }) => {
 
       {items.map((item, index) => (
         <div
-          className="flex border-t-4 border-slate-100 p-4 h-[98%] w-1/2 bg-white items-center"
+          className="flex border-t-4 border-gray-200 p-4 h-[50%] w-[60%]   bg-gray-100 "
           key={index}
         >
-          <div className="p-2 w-[65%] h-[25%]">
+          <div className="p-2 w-[70%] h-[15%]">
             {vegNon(item?.isVeg)}
             <h3
               className="font-bold flex items-center gap-1 text-base mt-1"
@@ -55,13 +56,15 @@ const ItemList = ({ items }) => {
             <h5 className="font-semibold text-sm">
               ₹ {item?.price / 100 ? item?.price / 100 : generateRandomNumber()}
             </h5>
-            <p className="text-sm text-wrap mt-3 font-light w-[80%]">
-              ({item?.description})
+            <p className="text-sm text-wrap mt-3 font-light w-full">
+              ( {item?.description?.split('.')[0]}.)
             </p>
           </div>
-          <div className="w-40 h-40 ml-14 rounded-lg border-black">
+
+          <div className="w-[40%] h-[15%] ml-14 rounded-lg border-black  flex flex-col
+          align-middle justify-around">
             <img
-              className="w-40 h-36 rounded-lg object-cover"
+              className="w- h- rounded-lg object-cover"
               key={item?.id}
               src={IMG_CDN_URL + item?.imageId}
             />
