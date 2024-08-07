@@ -1,5 +1,5 @@
 export const IMG_CDN_URL ="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320/"
-
+export const GEOLOCATION_API = 'f36f4209419c48a3b2d9cbb0f98eabbc';
 
 // export const restaurantList =[{
 //         "card": {

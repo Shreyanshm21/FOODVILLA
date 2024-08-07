@@ -61,10 +61,10 @@ const Header = () => {
             <Link to="/contact">
               <li className=" px-2 hover:bg-[#1b5b60] hover:text-white rounded-md p-1 hover:scale-105">Contact</li>
             </Link>
-
+{/* 
             <Link to="/instamart">
               <li className=" px-2 hover:bg-[#1b5b60] hover:text-white rounded-md p-1 hover:scale-105 ">Instamart</li>
-            </Link>
+            </Link> */}
 
             <Link to="/cart">
               <li className="flex items-center p-1 hover:scale-105  ml-2 text-center text-white rounded-md px- ">

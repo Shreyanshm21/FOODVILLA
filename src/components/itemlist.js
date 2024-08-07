@@ -42,7 +42,7 @@ const ItemList = ({ items }) => {
 
       {items.map((item, index) => (
         <div
-          className="flex border-t-4 border-gray-200 p-4 h-[50%] w-[60%]   bg-gray-100 "
+          className="flex border-t-4 border-gray-200 p-4 h-[65%] w-[60%]   bg-gray-100 "
           key={index}
         >
           <div className="p-2 w-[70%] h-[15%]">

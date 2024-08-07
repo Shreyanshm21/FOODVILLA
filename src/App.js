@@ -14,6 +14,8 @@ import Shimmer from "./components/Shimmer";
 import { Provider } from "react-redux";
 import store from "./utils/store";
 import Cart from "./components/Cart";
+import FakePayment from "./components/Payment";
+
 // import Instamart from "./components/Instamart";
 
 const AppLayout = () => {
@@ -60,19 +62,25 @@ const appRouter = createBrowserRouter([
         path: "/restaurant/:id",
         element: <RestaurantMenu />,
       },
-      {
-        path: "/instamart",
-        element: (
-          <Suspense fallback ={<Shimmer/>} >
-            <Instamart />
-          </Suspense>
-        ),
-      },
+      // {
+      //   path: "/instamart",
+      //   element: (
+      //     <Suspense fallback ={<Shimmer/>} >
+      //       <Instamart />
+      //     </Suspense>
+      //   ),
+      // },
       {
         path: "/cart",
         element : <Cart/>,
-      }
+      },
+      {
+        path: "/payment", 
+        element: <FakePayment />,
+      },
+  
     ],
+    
   },
 ]);
 

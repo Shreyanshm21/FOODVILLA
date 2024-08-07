@@ -14,8 +14,11 @@ import {NonVeg} from "./VegButton";
 import { useSelector } from "react-redux";
 import { MdOutlineShoppingBag } from "react-icons/md";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+
 import { selectTotalQuantity } from "../utils/cartSlice";
+import { getRestrauntInfoAPI } from "./Api";
+
+
 const RestaurantMenu = () => {
   const { id } = useParams();
   const params = useParams();
@@ -32,15 +35,15 @@ const RestaurantMenu = () => {
   useEffect(() => {
     getRestrauntInfo();
   }, []);
+
+
   async function getRestrauntInfo() {
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9715987&lng=77.5945627&restaurantId=" +
-      id +
-      "&catalog_qa=undefined&submitAction=ENTER"
-    );
+    const json = await getRestrauntInfoAPI(id);
     
-    const json = await data.json();
-    setinfo(json.data.cards[2].card.card.info);
+    
+    // const json = await data.json();
+    setinfo(json?.data?.cards[2]?.card?.card?.info);
+    console.log(info);
     
     setRestaurant(
       json.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.filter(
@@ -50,6 +53,7 @@ const RestaurantMenu = () => {
       )
     );
   }
+  console.log(restaurant)
   const openClose = () => {
     return info.isOpen ? (
       <>

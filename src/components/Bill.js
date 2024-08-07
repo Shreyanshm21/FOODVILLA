@@ -4,7 +4,9 @@ import { useSelector } from "react-redux"
 //Icons
 import { FaRegSquareCaretUp } from "react-icons/fa6";
 import { GrSquare } from "react-icons/gr";
-
+import FakePayment from "./Payment";
+import { Link } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 const Bill =() =>{
     const cartItems = useSelector((store) => store.cart.items);
     console.log(cartItems);
@@ -41,8 +43,8 @@ const Bill =() =>{
             
             
             <div className="list-inside" key={item.id}>
-                <div className="flex justify-between flex-wrap p-2 items-start">
-                    <h4 className="flex  text-wrap w-[70%] items-start gap-2" ><span className="mt-1"> {vegNon(item?.isVeg)} </span> {item.name}  </h4>
+                <div className="flex justify-between flex-wrap p-2 items-end">
+                    <h4 className="flex  text-wrap w-[60%] overflow-auto items-start gap-2" ><span className="mt-1"> {vegNon(item?.isVeg)} </span> {item.name}  </h4>
                     <p ><span className="font-bold">₹ {item.price/100}</span> x <span>{item.quantity}</span></p>
                     
                 </div>
@@ -56,17 +58,17 @@ const Bill =() =>{
 
                 <div className="flex flex-col justify-between">
                     <h5 className="flex justify-between">Item Total  <span className="font-bold">₹ {formattedValue}</span>   </h5>
-                    <h5 className="flex justify-between">Delivery Feel  <span className="font-bold">₹ 11</span>   </h5>
+                    <h5 className="flex justify-between">Delivery Fee  <span className="font-bold">₹ 11</span>   </h5>
                 </div>
             </div>
                 
             
 
 
-                <div className="flex justify-between text-gray-50 bg-[#1b5b60] p-2 px-4 font-bold rounded-md text-lg mt-4">
+                <Link to="/payment" className="flex justify-between text-gray-50 bg-[#1b5b60] p-2 px-4 font-bold rounded-md text-lg mt-4 cursor-pointer">
                     <h4>TO PAY</h4>
                     <h4 >{finalAmount}</h4>
-                </div>
+                </Link>
 
 
         
