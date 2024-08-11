@@ -95,8 +95,8 @@ const IsVegNon = ({ items }) => {
             {!cart.find((e) => e.id === item?.card?.info?.id) && (
               <button
                 className="
-                w-[60%] h-7 p-1 sm:text-base -translate-y-3 translate-x-5
-                md:w-[70%] md:h-9 md:translate-x-6 md:-translate-y-4 md:items-center 
+                w-[60%] h-7   -translate-y-3 translate-x-5
+                md:w-[70%] md:h-9 md:translate-x-6 md:-translate-y-4 items-center 
                 rounded-lg border-2 border-slate-200 bg-white text-green-600 font-bold
                 hover:text-white hover:bg-green-600 hover:border-green-600"
                 onClick={() => {

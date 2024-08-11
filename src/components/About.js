@@ -1,6 +1,6 @@
 import React from "react";
 import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa';
-
+import mine from "../assests/img/me.jpg"
 const About = () => {
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center mt-8">
@@ -20,7 +20,7 @@ const About = () => {
       <div className="max-w-4xl bg-white shadow-xl rounded-lg p-10 m-6 text-center border-t-4 border-[#1b5b60]">
         <h2 className="text-4xl font-semibold mb-4 text-[#1b5b60]">About the Creator</h2>
         <div className="flex justify-center mb-6">
-          <img src="/path/to/profile-image.jpg" alt="Profile" className="w-32 h-32 rounded-full border-4 border-[#1b5b60]" />
+          <img src={mine} alt="Profile" className="w-32 h-32 rounded-full border-4 border-[#1b5b60]" />
         </div>
         <p className="text-gray-700 text-lg leading-relaxed">
           Hi, I'm Shreyansh, a passionate web developer diving into React and modern web technologies. 
@@ -52,13 +52,13 @@ const About = () => {
           I'd love to hear your thoughts or answer any questions you may have. Connect with me through the links below!
         </p>
         <div className="flex justify-center gap-6 mb-6">
-          <a href="https://instagram.com/your-profile" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-[#1b5b60] transition duration-200">
+          <a href="https://www.instagram.com/shr.eyansh_?igsh=eWt2Zzl3cmFzMnY0" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-[#1b5b60] transition duration-200">
             <FaInstagram className="text-3xl" />
           </a>
-          <a href="https://github.com/your-profile" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-[#1b5b60] transition duration-200">
+          <a href="https://github.com/Shreyanshm21" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-[#1b5b60] transition duration-200">
             <FaGithub className="text-3xl" />
           </a>
-          <a href="https://linkedin.com/in/your-profile" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-[#1b5b60] transition duration-200">
+          <a href="https://www.linkedin.com/in/shreyansh-maheshwari-939a74265/" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-[#1b5b60] transition duration-200">
             <FaLinkedin className="text-3xl" />
           </a>
         </div>

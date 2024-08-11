@@ -14,13 +14,13 @@ const Footer = () => {
             <h1 className="text-2xl font-bold text-teal-400">FOODVILLA</h1>
           </div>
           <div className="mt-4 sm:mt-0 flex space-x-4">
-            <a href="https://www.instagram.com/yourprofile" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-teal-300 transition duration-300">
+            <a href="https://www.instagram.com/shr.eyansh_?igsh=eWt2Zzl3cmFzMnY0" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-teal-300 transition duration-300">
               <FaInstagram className="h-6 w-6" />
             </a>
-            <a href="https://github.com/yourprofile" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-teal-300 transition duration-300">
+            <a href="https://github.com/Shreyanshm21" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-teal-300 transition duration-300">
               <FaGithub className="h-6 w-6" />
             </a>
-            <a href="https://www.linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-teal-300 transition duration-300">
+            <a href="https://www.linkedin.com/in/shreyansh-maheshwari-939a74265/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-teal-300 transition duration-300">
               <FaLinkedin className="h-6 w-6" />
             </a>
           </div>

@@ -6,6 +6,8 @@ import Image from "../assests/img/NewLogo.png";
 import { useSelector } from "react-redux";
 import { MdOutlineShoppingBag } from "react-icons/md";
 import { selectTotalQuantity } from "../utils/cartSlice";
+import { FcIdea } from "react-icons/fc";
+import { FcNoIdea } from "react-icons/fc";
 
 function loginButton(isLoggedIn, setIsLoggedIn) {
   return isLoggedIn ? (
@@ -51,8 +53,8 @@ const Header = () => {
 
 <div className="flex flex-row items-center align-middle justify-center">
         {/* Hamburger Menu for Small Screens */}
-            <p className="p-1 px-2 text-white">
-              <span className="hidden md:inline " >Online Status:</span> {isOnline ? "✅" : "🔴"}
+            <p className="p-1 px-2 text-white md:flex md:flex-row md:items-center gap-1">
+              <span className="hidden md:inline item-center " >Online Status:</span> {isOnline ? <FcIdea className="" /> : <FcNoIdea className="text-xl" /> }
             </p>
 
 
@@ -77,7 +79,7 @@ const Header = () => {
           w-full md:static md:w-auto md:flex md:items-center md:space-x-6 md:m-4 md:p-0`}
         >
           <div className="flex flex-row items-end">
-          <ul className="flex-col inline-flex md:flex-row space-y-4 md:space-y-0 md:space-x-4 p-4 md:p-0">
+          <ul className="text-white flex-col inline-flex md:flex-row space-y-4 md:space-y-0 md:space-x-4 p-4 md:p-0">
 
             <Link to="/">
               <li className="px-3 py-1 transition-all duration-300 hover:bg-[#1b5b60] hover:text-white rounded-md hover:scale-110">
@@ -102,9 +104,9 @@ const Header = () => {
 
 
         {/* Cart Icon */}
-        <div className="relative flex items-center ml-2 p-1">
+        <div className="text-white relative flex items-center ml-2 p-2">
           <Link to="/cart">
-            <MdOutlineShoppingBag className="text-2xl transition-all duration-300 hover:scale-110 hover:text-[#0F9581]" />
+            <MdOutlineShoppingBag className="text-2xl transition-all duration-300 hover:scale-110 hover:bg-custom" />
             <span
               className={`inline-flex items-center justify-center w-5 h-5 text-xs font-semibold text-white bg-[#1b5b60] rounded-full absolute -top-1 -right-2 ${
                 totalQuantity > 0 ? "animate-bounce" : ""

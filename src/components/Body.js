@@ -98,7 +98,7 @@ const Body = () => {
   const isOnline = useOnline();
 
   if (!isOnline) {
-    return <h1>🔴 Offline , Please Check Your Internet Connection</h1>;
+    return <h1 className="w-auto h-auto p-8" >🔴 Offline , Please Check Your Internet Connection</h1>;
   }
 
   // Early Return - not render component
@@ -112,10 +112,10 @@ const Body = () => {
     <Shimmer />
   ) : (
     <>
-      <div className="bg-gray-200  flex gap-4 p-4 items-center">
-        <h2 className="font-semibold">Location </h2>
+      <div className="bg-gray-200 gap-2 p-2 flex flex-row md:gap-4 md:p-4 items-center">
+        <h2 className="font-medium md:font-semibold">Location </h2>
         <select
-          className=" p-1 outline-none bg-transparent text-custom md:text-lg"
+          className=" p-1 outline-none bg-transparent text-custom text-base md:text-lg"
           value={location}
           onChange={(e) => {
             //ChatGPT
@@ -164,8 +164,8 @@ const Body = () => {
           {searchInput2 ? (
             <button
               className="
-              w-[10%] -translate-x-[5px] p-2
-              md:p-2 md:w-[8.8%]   rounded-r-lg md:-translate-x-[6px] bg-black"
+              w-[12%] -translate-x-[5px] p-2
+              md:p-2 md:w-[8.8%]   rounded-r-lg md:-translate-x-[6px] bg-white"
               onClick={() => {
                 setFilteredRestaurants2(allRestaurants);
                 setSearchInput2("");
@@ -178,7 +178,7 @@ const Body = () => {
         </div>
       </div>
 
-      <div className="restaurant-List flex flex-col flex-wrap    md:flex-wrap md:flex-row md:justify-evenly ">
+      <div className="restaurant-List flex justify-items-center align-middle flex-col flex-wrap w-1/2 px-[25%] py-4  md:p-2 md:w-auto     md:flex-wrap md:flex-row md:justify-evenly ">
         {filteredRestaurants2.length == 0 ? (
           <NotFound input={searchInput2} />
         ) : (
