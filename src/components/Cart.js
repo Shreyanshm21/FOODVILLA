@@ -19,15 +19,28 @@ const Cart = () =>{
 
     return (
         <>
-        <div className={`flex h-full overflow-auto  justify-center p-16 bg-gray-200 ${cartItems.length ===0 ? "hidden" :""}  `}>
+        <div className={`flex flex-col   md:flex md:flex-row md:h-full md:overflow-auto  md:justify-center md:p-16 bg-gray- 200 ${cartItems.length ===0 ? "hidden" :""}  `}>
 
-            <div className="flex flex-col  place-items-center  w-[75%] p-2 align-middle ">
-                <button className="bg-custom rounded-lg p-2 py-1 text-lg text-white font-semibold ml-96 relative right mb-4" onClick={() => clear()} > Clear Cart</button>
-                {/* <h1 className="font-bold text-5xl p-4">Cart items - {totalQuantity} </h1> */}
-                <ItemList className="bg-gray-100" items={cartItems}></ItemList>
+            <div className="   flex flex-col  place-items-center  md:w-[75%] p-2 align-middle ">
+
+                <div className="border-2 p-2 mt-10  max-h-[300px] overflow-y-scroll md:w-[80%]  md:flex md:flex-col md:items-end   md:max-h-[400px]">
+
+                <button className={` p-2 text-base font-medium
+                bg-custom rounded-lg md:p-2 py-1 md:text-lg text-white md:font-semibold md:ml-96
+
+                relative right mb-4 ${cartItems.length ===0 ? "hidden" :""}  `}
+                onClick={() => clear()} > Clear Cart</button>
+                    <ItemList className="bg-gray-100 " items={cartItems}></ItemList>
+                </div>
+
+
             </div>
+        
+       
 
-        {cartItems.length >0 ?<Bill/>: null}
+                {cartItems.length >0 ?<Bill/>: null}
+            
+
         </div>
 
         {cartItems.length === 0 ? <EmptyCart/> : null}

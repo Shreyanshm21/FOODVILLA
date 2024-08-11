@@ -31,60 +31,98 @@ const Title = () => (
   </a>
 );
 
+import { useState } from "react";
+import { MdOutlineShoppingBag, MdMenu, MdClose } from "react-icons/md";
+import { Link } from "react-router-dom";
+
 const Header = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const isOnline = useOnline();
-
   const cartItems = useSelector((store) => store.cart.items);
   const totalQuantity = useSelector(selectTotalQuantity);
-  console.log(cartItems);
 
   return (
     <>
-      <div className="flex justify-between bg-[#21AF99] shadow-md items-center">
+      <div className="flex justify-between items-center bg-[#21AF99] shadow-md p-4">
+        
+        {/* Logo / Title */}
         <Title />
 
-        <div className="nav-items flex mr-4 items-center text-white ">
-          <ul className="flex p-4 m-5  ">
-            <li className="p-1 px-2">Online Status: {isOnline ? "✅" : "🔴"}</li>
+<div className="flex flex-row items-center align-middle justify-center">
+        {/* Hamburger Menu for Small Screens */}
+            <p className="p-1 px-2 text-white">
+              <span className="hidden md:inline " >Online Status:</span> {isOnline ? "✅" : "🔴"}
+            </p>
+
+
+        <div className="md:hidden flex items-center">
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="text-white focus:outline-none"
+          >
+            {isMenuOpen ? (
+              <MdClose className="text-3xl" />
+            ) : (
+              <MdMenu className="text-3xl" />
+            )}
+          </button>
+        </div>
+
+        {/* Navigation Items */}
+        <div
+          className={`${
+            isMenuOpen ? "block" : "hidden"
+          } absolute z-10 top-[113px] right-0 bg-[#21AF99] 
+          w-full md:static md:w-auto md:flex md:items-center md:space-x-6 md:m-4 md:p-0`}
+        >
+          <div className="flex flex-row items-end">
+          <ul className="flex-col inline-flex md:flex-row space-y-4 md:space-y-0 md:space-x-4 p-4 md:p-0">
 
             <Link to="/">
-              <li className=" px-2 hover:bg-[#1b5b60] hover:text-white rounded-md p-1 hover:scale-105">Home</li>
-            </Link>
-
-            
-            <Link to="/about">
-              <li className=" px-2 hover:bg-[#1b5b60] hover:text-white rounded-md p-1 hover:scale-105">About</li>
-            </Link>
-
-            <Link to="/contact">
-              <li className=" px-2 hover:bg-[#1b5b60] hover:text-white rounded-md p-1 hover:scale-105">Contact</li>
-            </Link>
-{/* 
-            <Link to="/instamart">
-              <li className=" px-2 hover:bg-[#1b5b60] hover:text-white rounded-md p-1 hover:scale-105 ">Instamart</li>
-            </Link> */}
-
-            <Link to="/cart">
-              <li className="flex items-center p-1 hover:scale-105  ml-2 text-center text-white rounded-md px- ">
-              <MdOutlineShoppingBag className="text-xl mt-[2px] hover:bg-[#1b5b60] hover:text-white rounded-md P-1 " />
-                <span className={`inline-flex items-center justify-center -translate-y-1 w-4 h-4  
-                text-xs font-semibold text-white  [#0F9581] 
-                bg-[#1b5b60] rounded-full  relative bottom-2   
-                ${totalQuantity > 0 ?'animate-bounce w-5 h-5' : ''
-                }`}>
-                  {totalQuantity}
-                </span>
+              <li className="px-3 py-1 transition-all duration-300 hover:bg-[#1b5b60] hover:text-white rounded-md hover:scale-110">
+                Home
               </li>
             </Link>
 
+            <Link to="/about">
+              <li className="px-3 py-1 transition-all duration-300 hover:bg-[#1b5b60] hover:text-white rounded-md hover:scale-110">
+                About
+              </li>
+            </Link>
+
+            <Link to="/contact">
+              <li className="px-3 py-1 transition-all duration-300 hover:bg-[#1b5b60] hover:text-white rounded-md hover:scale-110">
+                Contact
+              </li>
+            </Link>
           </ul>
-          {loginButton(isLoggedIn, setIsLoggedIn)}
+          </div>
         </div>
+
+
+        {/* Cart Icon */}
+        <div className="relative flex items-center ml-2 p-1">
+          <Link to="/cart">
+            <MdOutlineShoppingBag className="text-2xl transition-all duration-300 hover:scale-110 hover:text-[#0F9581]" />
+            <span
+              className={`inline-flex items-center justify-center w-5 h-5 text-xs font-semibold text-white bg-[#1b5b60] rounded-full absolute -top-1 -right-2 ${
+                totalQuantity > 0 ? "animate-bounce" : ""
+              }`}
+            >
+              {totalQuantity}
+            </span>
+          </Link>
+        </div>
+
+
+</div>        
       </div>
     </>
   );
 };
+
+
+
 
 export default Header;

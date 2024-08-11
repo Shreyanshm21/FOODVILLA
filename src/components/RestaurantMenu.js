@@ -74,26 +74,26 @@ const RestaurantMenu = () => {
     setIsNonVeg(!isNonVeg);
     console.log("Veg is clicked: " + !isNonVeg);
   };
-  // console.log(restaurant);
+  console.log(restaurant);
   return !restaurant ? (
     <Shimmer />
   ) : (
     <>
-      <div className="mainbox flex flex-col items-center  bg-gray-100  ">
+      <div className="mainbox flex flex-col items-center mb-10  bg-gray-100  ">
 
-          <div className="w-1/2 mt-20 p-4 pl-2">
-          <h1 className="text-2xl p-2 pl-0 font-bold">{info.name}</h1>
+          <div className="md:w-1/2 w-[75%] flex flex-row items-start mt-20 p-4 pl-2">
+          <h1 className="text-2xl p-2 pl-0 font-bold  ">{info.name}</h1>
           </div>
 
 
-          <div className="Box1 bg-gray-200 p-4 pt-0 pt-  w-1/2 rounded-b-2xl border-2 border-gray-100">
+          <div className="Box1 bg-gray-200 p-4 pt-0 pt- w-[75%] md:w-1/2 rounded-b-2xl border-2 border-gray-100">
 
           <div className="bg-gray-100 border-2 border-gray-300 text-black mt-2 p-6 rounded-3xl
           flex flex-col gap-y-1 align-middle">
-            <h2 className="flex justify-between">
+            <h2 className="flex justify-between  ">
               <span className="flex items-center font-medium ">
                 <FaMapMarkerAlt className="mr-1 text-red-600" />
-                {info.areaName}
+                <span className="font-extrabold">{info.areaName}</span>
               </span>
               <span className="flex items-center font-medium">
                 {openClose()}
@@ -101,7 +101,7 @@ const RestaurantMenu = () => {
             </h2>
 
             <h3 className="font-medium flex gap-1 ">
-              <span className="flex items-center gap-1">
+              <span className="flex items-center gap-1 ">
                 <MdStars className="text-green-600" /> {info.avgRating}{" "}
               </span>
               <span className="">({info.totalRatingsString})</span>
@@ -123,19 +123,19 @@ const RestaurantMenu = () => {
           {/* </div> */}
         </div>
 
-        <span className=" w-1/2 rounded-md p-2 text-center bg-gray-200 mt-28 mb-10 text-slate-800 font-normal">
+        <span className="w-[75%] md:w-1/2 rounded-md p-2 text-center bg-gray-200 mt-28 mb-10 text-slate-800 font-normal">
           MENU
         </span>
             
         
-        <div className={`${cartItems.length > 0 ? 'bg-[#1b5b60]  w-1/2 text-white fixed px-4 bottom-0 h-14 z-10 flex justify-between' : 'hidden'}`}>
+        <div className={`${cartItems.length > 0 ? 'bg-[#1b5b60] w-full rounded-t-lg md:w-1/2 text-white fixed px-4 bottom-0 h-14 z-10 flex justify-between' : 'hidden'}`}>
         <h1 className="p-2 flex items-center" >{totalQuantity} Item Added </h1>
         <Link to="/cart" className="flex items-center gap-2 p-2" > View Cart<MdOutlineShoppingBag/> </Link>
         </div>
 
                     {/* Trying Non veg part  -- -- - - - -- -- - - - - - - - - */}
 
-        <div className=" w-1/2 inline-flex justify-start  gap-2 mb-4">
+        <div className=" w-[75%] md:w-1/2 inline-flex justify-start  gap-2 mb-4">
           <div className=" rounded-xl p-    ">
             <VegButton 
             isChecked={isVeg} 
@@ -155,7 +155,7 @@ const RestaurantMenu = () => {
         </div>
 
         {/* -- - - - -- - - -- - - - - -- - --- - -- - - -  - - -- - - -  -- - */}
-        <div className="Box2 w-1/2 bg-gray-200">
+        <div className="Box2 md:w-1/2 w-[75%] bg-gray-200">
           {restaurant.map((items, index) => {
             return (
               <Menu

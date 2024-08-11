@@ -9,10 +9,24 @@ const Menu = ({ title, itemCards,index  , flag1 , flag2 }) => {
         setFlag(!flag);
     };
 
+    /*************************FILTERING DATA ON BASIS OF VEG AND NON VEG ************************************************/
+    let data;
+    if (flag1 === flag2) {
+        data = itemCards;
+    } else if (flag1) {
+        data = itemCards.filter((item) => item?.card?.info?.isVeg);
+    } else if (flag2) {
+        data = itemCards.filter((item) => !item?.card?.info?.isVeg);
+    }
+
+
+
+    // console.log(itemCards.length);
+
     let content ;
     let text ;
     if(flag){
-        content = <IsVegNon items={itemCards} key={index}  veg ={flag1} non ={flag2}  />
+        content = <IsVegNon items={data} key={index}   />
 
     }
     else{
@@ -22,16 +36,16 @@ const Menu = ({ title, itemCards,index  , flag1 , flag2 }) => {
     return (
     <>
     
-    <div className="subSections">
+    <div className={`subSections ${data.length ===0 ? 'hidden' : ""} `}>
         <div className="flex justify-between p-4 items-center cursor-pointer " onClick={trying}>
-            <h1 className="font-bold">{title}</h1>
+            <h1 className="font-bold text-gray-950">{title} <span>({data.length})</span> </h1>
             <button className="items-center" onClick={trying}>{flag ? <FaAngleUp /> : <FaAngleDown />}</button>
-        
         </div>
         
         <div className=" flex flex-col  ">
             {content}
         </div>
+        
         <div className="h-2 w-[100%] bg-gray-50 block mt-2"></div>
         
         

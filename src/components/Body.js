@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import useOnline from "../utils/useOnline";
 import { RxCross2 } from "react-icons/rx";
 import NotFound from "./NotFound";
+import backgroundImage from "../assests/img/bgimage1.png"
 
 // API call
 import { fetchRestraunt, getLatLong } from "./Api";
@@ -47,9 +48,12 @@ const Body = () => {
     "Lucknow",
     "Karnal",
     "Panipat",
+    "Ludhiana",
     "Chandigar",
     "Surat",
     "Amritsar",
+    "Ganganagar",
+    "Agra"
   ]);
   const [location, setLocation] = useState(
     localStorage.getItem("location") || "Bengaluru"
@@ -111,7 +115,7 @@ const Body = () => {
       <div className="bg-gray-200  flex gap-4 p-4 items-center">
         <h2 className="font-semibold">Location </h2>
         <select
-          className=" p-1 outline-none bg-transparent text-custom text-lg"
+          className=" p-1 outline-none bg-transparent text-custom md:text-lg"
           value={location}
           onChange={(e) => {
             //ChatGPT
@@ -129,21 +133,23 @@ const Body = () => {
       <div
         className="flex justify-center w-auto items-center mt-0 mb-5 p-10 bg-auto bg-repeat bg-bottom "
         style={{
-          backgroundImage:
-            "url('https://www.shutterstock.com/image-vector/kitchen-food-pattern-cook-icons-600nw-2247014163.jpg')",
+          backgroundImage: `url(${backgroundImage})`,
           zIndex: "-1",
         }}
       >
-        <h1 className="font-extrabold items-center text-9xl shadow border-4 border-black text-[#21AF99] opacity-100  bg-gray-100 p-2 rounded-lg animate-.spin-slow ">
+        <h1 className="font-extrabold items-center  md:w-auto md:text-9xl shadow md:border-4 
+         border-black text-[#21AF99] opacity-100  bg-gray-100 p-2 rounded-lg animate-.spin-slow 
+         text-6xl border-2">
           FOODVILLA
         </h1>
       </div>
 
-      <div className="search-container shadow-md p-5 bg-[#21AF99] my-5 flex items-center justify-center mt-0 ">
-        <div className="flex items-center  w-[50%]">
+      <div className="search-container shadow-md p-5 bg-[#21AF99] md:my-5 flex items-center justify-center md:mt-0 ">
+        <div className="flex items-center  md:w-[50%] w-[75%] ">
           <input
             type="text"
-            className="placeholder: placeholder:text-slate-400 pl-2 pr-3 shadow-sm focus:outline-none p-2 w-full rounded-lg "
+            className="placeholder: placeholder:text-slate-400 pl-2 md:pr-3 shadow-sm focus:outline-none p-2 md:w-full rounded-lg
+            mobile w-full "
             placeholder="🔍 Search for restaurants and cuisines "
             value={searchInput2}
             onChange={(e) => {
@@ -157,7 +163,9 @@ const Body = () => {
 
           {searchInput2 ? (
             <button
-              className="p-2 w-[8.8%]   rounded-r-lg -translate-x-[6px] bg-white"
+              className="
+              w-[10%] -translate-x-[5px] p-2
+              md:p-2 md:w-[8.8%]   rounded-r-lg md:-translate-x-[6px] bg-black"
               onClick={() => {
                 setFilteredRestaurants2(allRestaurants);
                 setSearchInput2("");
@@ -166,10 +174,11 @@ const Body = () => {
               ❌
             </button>
           ) : null}
+          
         </div>
       </div>
 
-      <div className="restaurant-List flex flex-wrap justify-evenly">
+      <div className="restaurant-List flex flex-col flex-wrap    md:flex-wrap md:flex-row md:justify-evenly ">
         {filteredRestaurants2.length == 0 ? (
           <NotFound input={searchInput2} />
         ) : (

@@ -6,6 +6,7 @@ import Footer from "./components/Footer";
 import { IMG_CDN_URL } from "./components/contents";
 import About from "./components/About";
 import Error from "./components/Error";
+// import Contact from "./components/contact";
 import Contact from "./components/contact";
 import RestaurantMenu from "./components/RestaurantMenu";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
