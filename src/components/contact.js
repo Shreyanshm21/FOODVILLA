@@ -15,7 +15,7 @@ const contact = () =>{
       return;
     }
 
-    const mailtoLink = `mailto:abc@mail.com?subject=${encodeURIComponent(subject)}&body=Name: ${encodeURIComponent(name)}%0D%0AEmail: ${encodeURIComponent(email)}%0D%0ARating: ${rating}/5%0D%0A%0D%0AMessage:%0D%0A${encodeURIComponent(message)}`;
+    const mailtoLink = `mailto:shrey3639@gmail.com?subject=${encodeURIComponent(subject)}&body=Name: ${encodeURIComponent(name)}%0D%0AEmail: ${encodeURIComponent(email)}%0D%0ARating: ${rating}/5%0D%0A%0D%0AMessage:%0D%0A${encodeURIComponent(message)}`;
 
     window.location.href = mailtoLink;
   };
