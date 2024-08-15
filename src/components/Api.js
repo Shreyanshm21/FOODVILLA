@@ -3,20 +3,28 @@ import { GEOLOCATION_API } from "./contents";
 let savelat = 12.9715987;
 let savelang =77.5945627;
 
-const apiUrl = '/api/cors-proxy';
+export async function fetchRestraunt(lat,lng){
+    savelat=lat;
+    savelang=lng;
+    const respone = await fetch(
+        // Benglore API
+        // "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+        //Ludhiana
+        `https://www.swiggy.com/dapi/restaurants/list/v5?lat=${lat}&lng=${lng}&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`
+    );
 
-export async function fetchRestraunt(lat, lng) {
-    savelat= lat;
-    savelang = lng;
-  const response = await fetch(`${apiUrl}?lat=${lat}&lng=${lng}`);
-  const data = await response.json();
-  return data?.data?.cards[1].card.card.gridElements?.infoWithStyle?.restaurants || [];
+    const data = await respone.json();
+    // console.log(data?.data);
+    return data?.data?.cards[1].card.card.gridElements?.infoWithStyle?.restaurants || [];
 }
 
-export async function getRestrauntInfoAPI(id) {
-  const response = await fetch(`${apiUrl}?lat=${savelat}&lng=${savelang}&id=${id}`);
-  const data = await response.json();
-  return data;
+export async function getRestrauntInfoAPI(id){
+    const data = await fetch(
+        `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=${savelat}&lng=${savelang}&restaurantId=` +
+        id +
+        `&catalog_qa=undefined&submitAction=ENTER`
+    );
+    return data.json() ;
 }
 
 export async function getLatLong(city){
