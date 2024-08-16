@@ -17,7 +17,7 @@ const cartSlice = createSlice({
                 const newItem = { ...action.payload, quantity: 1 };
                 state.items.push(newItem);
             }
-            console.log('Updated items (JSON):', JSON.parse(JSON.stringify(state.items)));
+            // console.log('Updated items (JSON):', JSON.parse(JSON.stringify(state.items)));
         },
         // it takes the state and modify's directly doesn't return anything .
         clearCart :(state) => {
@@ -34,7 +34,7 @@ const cartSlice = createSlice({
                     state.items = state.items.filter((e)=>e.id != state.items[itemIndex].id);
                 }
             }
-            console.log('Updated items (JSON):', JSON.parse(JSON.stringify(state.items)));
+            // console.log('Updated items (JSON):', JSON.parse(JSON.stringify(state.items)));
             // state.items.pop();
         },
         

@@ -75,7 +75,7 @@ const IsVegNon = ({ items }) => {
             /> }
 
             {cart.find((e) => e.id === item?.card?.info?.id) && (
-              <div className="w-[60%] md:w-[70%] md:h-9 -translate-y-3 translate-x-5
+              <div className="w-[65%] h-8 md:w-[70%] md:h-9 -translate-y-3 translate-x-5
                md:translate-x-6 md:-translate-y-4 flex items-center rounded-lg border-2 justify-between border-slate-200 bg-white text-green-600 font-bold gap-2">
                 <span
                   className="flex items-center justify-center w-1/3 rounded-lg h-full hover:text-white hover:bg-green-600 hover:border-green-600 cursor-pointer"
@@ -95,7 +95,7 @@ const IsVegNon = ({ items }) => {
             {!cart.find((e) => e.id === item?.card?.info?.id) && (
               <button
                 className="
-                w-[60%] h-7   -translate-y-3 translate-x-5
+                w-[60%] h-8   -translate-y-3 translate-x-5
                 md:w-[70%] md:h-9 md:translate-x-6 md:-translate-y-4 items-center 
                 rounded-lg border-2 border-slate-200 bg-white text-green-600 font-bold
                 hover:text-white hover:bg-green-600 hover:border-green-600"

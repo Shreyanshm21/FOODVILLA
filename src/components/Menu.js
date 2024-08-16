@@ -21,8 +21,6 @@ const Menu = ({ title, itemCards,index  , flag1 , flag2 }) => {
 
 
 
-    // console.log(itemCards.length);
-
     let content ;
     let text ;
     if(flag){

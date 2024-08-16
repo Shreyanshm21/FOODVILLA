@@ -7,7 +7,9 @@ import useOnline from "../utils/useOnline";
 import { RxCross2 } from "react-icons/rx";
 import NotFound from "./NotFound";
 import backgroundImage from "../assests/img/bgimage1.png"
-
+import store from "../utils/store";
+import { useDispatch } from "react-redux";
+import { clearCart} from "../utils/cartSlice";
 // API call
 import { fetchRestraunt, getLatLong } from "./Api";
 
@@ -46,19 +48,24 @@ const Body = () => {
     "Ahmedabad",
     "Patna",
     "Lucknow",
-    "Karnal",
-    "Panipat",
     "Ludhiana",
-    "Chandigar",
+    "Chandigarh",
     "Surat",
     "Amritsar",
-    "Ganganagar",
-    "Agra"
+    "Agra",
+    "Hyderabad",
+    "Guwahati",
+    "Dehradun"
   ]);
   const [location, setLocation] = useState(
     localStorage.getItem("location") || "Bengaluru"
   );
+  const [prevlocation , setPrevlocation] = useState(location);
+  const dispatch = useDispatch();
 
+  const handleClearCart = () => {
+    dispatch(clearCart());
+  };
   // const locations = {
   //   Bengaluru: { lat: 12.9715987, lng: 77.5945627 },
   //   Ludhiana: { lat: 30.900965, lng: 75.8572758 },
@@ -72,26 +79,24 @@ const Body = () => {
   useEffect(() => {
     // API CALL
     getRestraunt();
+    // If location is changed the cart should be empty .
+    if(location !== prevlocation){
+        handleClearCart();
+        setPrevlocation(location);
+    }
   }, [location]);
 
   async function getRestraunt() {
-    // const {lat , lng} = locations[location];
-    // console.log(location);
-  
-
     const data = await getLatLong(location);
-    // console.log(data?.features?.[0]?.geometry?.coordinates);
+
     const [lng, lat] = data?.features?.[0]?.geometry?.coordinates;
-    // console.log(lat, lng);
+    
 
     const restraunts = await fetchRestraunt(lat, lng);
     setAllRestaurants(restraunts);
-    // setAllRestaurants(
-    //   json?.data?.cards[1].card.card.gridElements?.infoWithStyle?.restaurants
-    // );
+    
     setFilteredRestaurants2(restraunts);
-    // console.log(restraunts);
-    // console.log( json?.data?.cards[1].card.card.gridElements?.infoWithStyle?.restaurants);
+
   }
 
   // OFFLINE FEATURE
@@ -104,10 +109,7 @@ const Body = () => {
   // Early Return - not render component
   if (!allRestaurants) return null;
 
-  // if (filteredRestaurants?.length === 0)
-  //     return <h1>No Restraunt Match Your filter!!</h1>;
-
-  // console.log("render()");
+  
   return allRestaurants?.length === 0 ? (
     <Shimmer />
   ) : (
@@ -156,7 +158,7 @@ const Body = () => {
               // e.target.value= whatever you write in the input
               setSearchInput2(e.target.value);
               const hello = filterData2(e.target.value, allRestaurants);
-              // console.log(searchInput2)
+      
               setFilteredRestaurants2(hello);
             }}
           />

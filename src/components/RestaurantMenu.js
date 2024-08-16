@@ -43,7 +43,7 @@ const RestaurantMenu = () => {
     
     // const json = await data.json();
     setinfo(json?.data?.cards[2]?.card?.card?.info);
-    console.log(info);
+    
     
     setRestaurant(
       json.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.filter(
@@ -53,7 +53,6 @@ const RestaurantMenu = () => {
       )
     );
   }
-  console.log(restaurant)
   const openClose = () => {
     return info.isOpen ? (
       <>
@@ -68,13 +67,10 @@ const RestaurantMenu = () => {
   
   const handleToggle = () => {
     setIsVeg(!isVeg);
-    console.log("Veg is clicked: " + !isVeg);
   };
   const handleToggleNon = () => {
     setIsNonVeg(!isNonVeg);
-    console.log("Veg is clicked: " + !isNonVeg);
   };
-  console.log(restaurant);
   return !restaurant ? (
     <Shimmer />
   ) : (

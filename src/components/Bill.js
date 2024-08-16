@@ -9,7 +9,6 @@ import { Link } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 const Bill = () => {
   const cartItems = useSelector((store) => store.cart.items);
-  console.log(cartItems);
 
   let value = 0;
   cartItems.forEach((item) => {
