@@ -9,7 +9,7 @@ const FakePayment = () => {
     }, 2500); // 5 seconds
 
     return () => clearTimeout(timer);
-  }, []);
+  }, []);  
 
   return (
     <div className="flex items-center justify-center min-h-screen  bg-gray-100">
