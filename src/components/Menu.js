@@ -25,7 +25,7 @@ const Menu = ({ title, itemCards,index  , flag1 , flag2 }) => {
     let text ;
     if(flag){
         content = <IsVegNon items={data} key={index}   />
-
+   
     }
     else{
         content = null;
